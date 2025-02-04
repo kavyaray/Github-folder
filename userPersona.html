@@ -1,0 +1,129 @@
+<!-- HTML document structure declaration -->
+<!DOCTYPE html>
+<!-- Opens the HTML document with language (English) -->
+<html lang="en">
+<head>
+    <!-- Defines character encoding for the document -->
+    <meta charset="UTF-8">
+    <!-- Ensures responsive behavior on different screen sizes -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Sets the title of the web page in the browser tab -->
+    <title>UX Personas - Healthy Snacking</title>
+    <style>
+        /* Applies a clean, modern font and centers content */
+        body {
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #d4edda; /* Light fresh green background color */
+        }
+
+        /* Styles the persona card with rounded edges, padding, and a soft shadow */
+        .persona-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            width: 320px;
+            margin: 10px;
+        }
+
+        /* Removes bullet points from the list */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        /* Container to hold both personas */
+        .persona-container {
+            display: flex;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Container for both personas -->
+    <div class="persona-container">
+        <!-- First persona: College Student -->
+        <div class="persona-card">
+            <!-- Displays the name of the first persona -->
+            <h2 id="persona1-name"></h2>
+            <!-- Displays the age of the first persona -->
+            <p><strong>Age:</strong> <span id="persona1-age"></span></p>
+            <!-- Displays a list of key concerns for the first persona -->
+            <p><strong>Key Concerns:</strong></p>
+            <ul id="persona1-concerns"></ul>
+        </div>
+
+        <!-- Second persona: Working Professional with Kids -->
+        <div class="persona-card">
+            <!-- Displays the name of the second persona -->
+            <h2 id="persona2-name"></h2>
+            <!-- Displays the age of the second persona -->
+            <p><strong>Age:</strong> <span id="persona2-age"></span></p>
+            <!-- Displays a list of key concerns for the second persona -->
+            <p><strong>Key Concerns:</strong></p>
+            <ul id="persona2-concerns"></ul>
+        </div>
+    </div>
+    
+    <script>
+        // Creates an object for the first persona: College Student managing pre-diabetes
+        let persona1 = {
+            name: "Sophia, the College Student", // Name of the persona
+            age: 20, // Age of the persona
+            concerns: [ // List of key concerns
+                "Balancing healthy snacks on a college budget", 
+                "Finding quick, nutritious meals", 
+                "Managing pre-diabetes while living on campus"
+            ],
+            // Function to introduce the persona
+            introduce: function() {
+                return `I'm ${this.name} and I focus on ${this.concerns.join(", ")}.`;
+            }
+        };
+
+        // Creates an object for the second persona: Working professional and parent
+        let persona2 = {
+            name: "Alex, the Busy Parent & Professional", // Name of the persona
+            age: 35, // Age of the persona
+            concerns: [ // List of key concerns
+                "Finding healthy snacks for kids", 
+                "Convenient and nutritious office snacks", 
+                "Managing a busy work-life balance"
+            ],
+            // Function to introduce the persona
+            introduce: function() {
+                return `I'm ${this.name} and I focus on ${this.concerns.join(", ")}.`;
+            }
+        };
+
+        // Updating the HTML content for persona 1
+        document.getElementById("persona1-name").innerText = persona1.name; // Sets name in the HTML
+        document.getElementById("persona1-age").innerText = persona1.age; // Sets age in the HTML
+        let persona1List = document.getElementById("persona1-concerns"); // Selects the concerns list for persona 1
+        persona1.concerns.forEach(concern => { // Loops through each concern
+            let listItem = document.createElement("li"); // Creates a new list item
+            listItem.textContent = `- ${concern}`; // Sets the text content of the list item
+            persona1List.appendChild(listItem); // Appends the list item to the concerns list
+        });
+
+        // Updating the HTML content for persona 2
+        document.getElementById("persona2-name").innerText = persona2.name; // Sets name in the HTML
+        document.getElementById("persona2-age").innerText = persona2.age; // Sets age in the HTML
+        let persona2List = document.getElementById("persona2-concerns"); // Selects the concerns list for persona 2
+        persona2.concerns.forEach(concern => { // Loops through each concern
+            let listItem = document.createElement("li"); // Creates a new list item
+            listItem.textContent = `- ${concern}`; // Sets the text content of the list item
+            persona2List.appendChild(listItem); // Appends the list item to the concerns list
+        });
+
+        // Logs introductions of both personas to the console for debugging purposes
+        console.log(persona1.introduce());
+        console.log(persona2.introduce());
+    </script>
+</body>
+</html>
